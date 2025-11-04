@@ -11,6 +11,8 @@ router.get("/about", (req, res) => res.send ("<h1>This is the about page</h1>"))
 router.get('/contact', (req, res) => res.send ('<h1>This is the contact page</h1>'));
 router.get('/date', (req, res) => res.send ('<h1>This is the dates page</h1>'));
 router.get('/welcome', (req, res) => res.send ('<h1>Welcome Andy</h1>'));
+router.get('/file', (req, res) => res.send ('routes\a.html'));
+
 // Define the /chain route with two chained handlers
 router.get('/chain', firstHandler, secondHandler);
 const firstHandler = (req, res,next) => {
@@ -20,7 +22,7 @@ const firstHandler = (req, res,next) => {
 };
 
 // Second handler (final response)
-const secondHandler = (req, res) => {
+const secondHandler = (req, res,next ) => {
   console.log('Second handler executed');
   res.send({
     message: req.message,
